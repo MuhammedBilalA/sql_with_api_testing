@@ -25,6 +25,7 @@ class DataBaseFunctions {
   Future<List<LocalModelClass>> addDetails() async {
     try {
       await initDataBase();
+      
       final int count = await _db.query('details').then((results) => results.length);
 
       if (count == 0) {
@@ -49,10 +50,12 @@ class DataBaseFunctions {
 
       final List<Map<String, Object?>> values = await _db.rawQuery('SELECT * FROM details');
 
-      for (var map in values) {
-        final LocalModelClass details = LocalModelClass.fromMap(map);
+      for (int i = 0; i < 200; i++) {
+        for (var map in values) {
+          final LocalModelClass details = LocalModelClass.fromMap(map);
 
-        localModelClass.add(details);
+          localModelClass.add(details);
+        }
       }
       return localModelClass;
     } catch (e) {

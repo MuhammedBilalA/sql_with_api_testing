@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sql_with_api_testing/src/presentation/controller/bindings/bindings.dart';
 import 'package:sql_with_api_testing/src/presentation/view/splash_screen/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  DependencyBinding().dependencies();
   runApp(const MyApp());
 }
 

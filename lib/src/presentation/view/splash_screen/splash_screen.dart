@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sql_with_api_testing/src/presentation/view/home_screen/home_screen.dart';
 
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
@@ -9,7 +10,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Future.delayed(const Duration(seconds: 1), () {
-        Get.off(const HomeScreen());
+        Get.off(HomeScreen());
       });
     });
     return const Scaffold(
