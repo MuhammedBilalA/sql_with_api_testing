@@ -12,6 +12,7 @@ class HomeScreenController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+
     apiLocalList = await DataBaseFunctions().addDetails();
     _getMoreList();
     scrollController.addListener(() {
@@ -28,7 +29,7 @@ class HomeScreenController extends GetxController {
         for (int i = _currentMax.value; i < _currentMax.value + 10; i++) {
           lazyLocalList.add(apiLocalList[i]);
         }
-        _currentMax += 10;
+        _currentMax = _currentMax + 10;
       },
     );
   }

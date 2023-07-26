@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sql_with_api_testing/src/data/repositories/repositories.dart';
@@ -25,8 +27,9 @@ class DataBaseFunctions {
   Future<List<LocalModelClass>> addDetails() async {
     try {
       await initDataBase();
-      
+
       final int count = await _db.query('details').then((results) => results.length);
+      log(count.toString());
 
       if (count == 0) {
         List<RemoteModelClass> dataList = await ApiFunctions().getData();
@@ -57,6 +60,7 @@ class DataBaseFunctions {
           localModelClass.add(details);
         }
       }
+      
       return localModelClass;
     } catch (e) {
       Get.snackbar('something went wrong', e.toString());
